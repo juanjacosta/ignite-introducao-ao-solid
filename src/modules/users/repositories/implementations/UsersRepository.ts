@@ -35,19 +35,26 @@ class UsersRepository implements IUsersRepository {
   }
 
   findById(id: string): User | undefined {
-    // Complete aqui
+    const userById = this.users.find((u) => u.id === id);
+    return userById;
   }
 
   findByEmail(email: string): User | undefined {
-    // Complete aqui
+    const userByEmail = this.users.find((u) => u.email === email);
+    return userByEmail;
   }
 
   turnAdmin(receivedUser: User): User {
-    // Complete aqui
+    Object.assign(receivedUser, {
+      admin: true,
+      updated_at: new Date(),
+    });
+
+    return receivedUser;
   }
 
   list(): User[] {
-    // Complete aqui
+    return this.users;
   }
 }
 
